@@ -2,6 +2,7 @@ package com.example.bank.accout.domain;
 
 import com.example.bank.user.domain.User;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -36,6 +37,7 @@ public class Account {
     @Column(nullable = false)
     private LocalDateTime updateAt;
 
+    @Builder
     public Account(Long id, Long number, Long password, Long balance, User user,
                    LocalDateTime createAt, LocalDateTime updateAt) {
         this.id = id;

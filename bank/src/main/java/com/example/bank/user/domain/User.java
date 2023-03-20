@@ -19,7 +19,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(unique = true, nullable = false, length = 20)
     private String username;
     @Column(nullable = false, length = 60)
@@ -28,7 +27,7 @@ public class User {
     private String email;
     @Column(nullable = false, length = 20)
     private String fullName;
-    @Column(nullable = false)
+    @Column()
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
     @CreatedDate //Insert

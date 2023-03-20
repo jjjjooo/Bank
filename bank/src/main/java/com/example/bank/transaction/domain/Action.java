@@ -1,7 +1,6 @@
 package com.example.bank.transaction.domain;
 
 import com.example.bank.accout.domain.Account;
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,11 +12,11 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "transaction_tb")
+@Table(name = "action_tb")
 @Entity
-public class Transaction {
+public class Action {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +32,7 @@ public class Transaction {
     private TransactionType transactionType;
     private String sender;
     private String receiver;
-    private Long value;
+    private Long tel;
     @CreatedDate //Insert
     @Column(nullable = false)
     private LocalDateTime createAt;
@@ -42,9 +41,9 @@ public class Transaction {
     private LocalDateTime updateAt;
 
     @Builder
-    public Transaction(Long id, Account withdrawAccount, Account depositAccount, Long amount,
-                       Long withdrawAccountBalance, Long depositAccountBalance, TransactionType transactionType,
-                       String sender, String receiver, Long value, LocalDateTime createAt, LocalDateTime updateAt) {
+    public Action(Long id, Account withdrawAccount, Account depositAccount, Long amount,
+                  Long withdrawAccountBalance, Long depositAccountBalance, TransactionType transactionType,
+                  String sender, String receiver, Long value, LocalDateTime createAt, LocalDateTime updateAt) {
         this.id = id;
         this.withdrawAccount = withdrawAccount;
         this.depositAccount = depositAccount;
@@ -54,7 +53,7 @@ public class Transaction {
         this.transactionType = transactionType;
         this.sender = sender;
         this.receiver = receiver;
-        this.value = value;
+        this.tel = value;
         this.createAt = createAt;
         this.updateAt = updateAt;
     }
