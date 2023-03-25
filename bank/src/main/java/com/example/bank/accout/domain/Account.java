@@ -1,5 +1,6 @@
 package com.example.bank.accout.domain;
 
+import com.example.bank.global.exception.CustomApiException;
 import com.example.bank.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -47,6 +48,33 @@ public class Account {
         this.user = user;
         this.createAt = createAt;
         this.updateAt = updateAt;
+    }
+
+    public void checkOwner(Long userId){
+        if(user.getId() != userId){
+            throw new CustomApiException("계좌를 찾을 수 없습니다.");
+        }
+    }
+
+    public void deposit(Long amount) {
+        this.balance += amount;
+    }
+
+    public void checkPassword(Long password) {
+        if(this.password.longValue() != password){
+            throw new CustomApiException("게좌 비밀번호 검증에 실패했습니다");
+        }
+    }
+
+    public void checkBalance(Long amount) {
+        if(this.balance < amount){
+            throw new CustomApiException("계좌잔액이 부족합니다.");
+        }
+    }
+
+    public void withdraw(Long amount) {
+        this.checkBalance(amount);
+        this.balance -= amount;
     }
 }
 

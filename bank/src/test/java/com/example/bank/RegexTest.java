@@ -64,4 +64,18 @@ public class RegexTest {
         boolean result = Pattern.matches("^[a-zA-Z0-9]{4,6}@[a-zA-Z0-9]{2,6}\\.[a-zA-Z]{2,3}$", value);
         System.out.println("테스트 : " + result);
     }
+
+    @Test
+    void account_gubun_test(){
+        String value = "DEPOSIT";
+        boolean result = Pattern.matches("^(DEPOSIT|TRANSFER)$", value);
+        System.out.println("테스트 : " + result);
+    }
+
+    @Test
+    void account_tel_test(){
+        String value = "01100001111";
+        boolean result = Pattern.matches("^[0-1]{3}[0-9]{4}[0-9]{4}", value);
+        System.out.println("테스트 : " + result);
+    }
 }

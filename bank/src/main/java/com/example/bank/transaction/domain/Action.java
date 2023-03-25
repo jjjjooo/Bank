@@ -32,7 +32,7 @@ public class Action {
     private TransactionType transactionType;
     private String sender;
     private String receiver;
-    private Long tel;
+    private String tel;
     @CreatedDate //Insert
     @Column(nullable = false)
     private LocalDateTime createAt;
@@ -43,7 +43,7 @@ public class Action {
     @Builder
     public Action(Long id, Account withdrawAccount, Account depositAccount, Long amount,
                   Long withdrawAccountBalance, Long depositAccountBalance, TransactionType transactionType,
-                  String sender, String receiver, Long value, LocalDateTime createAt, LocalDateTime updateAt) {
+                  String sender, String receiver, String tel, LocalDateTime createAt, LocalDateTime updateAt) {
         this.id = id;
         this.withdrawAccount = withdrawAccount;
         this.depositAccount = depositAccount;
@@ -53,7 +53,7 @@ public class Action {
         this.transactionType = transactionType;
         this.sender = sender;
         this.receiver = receiver;
-        this.tel = value;
+        this.tel = tel;
         this.createAt = createAt;
         this.updateAt = updateAt;
     }
